@@ -52,8 +52,8 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     const {name, password} = req.body;
     let findUser = allUsers.find((user) => user.name === name);
-    console.log(findUser.name);
-    findUser.password === password ? res.render('allUsers') : res.render('reg');
+    //console.log(findUser.name);
+    findUser.password === password ? res.render('allUsers', {allUsers}) : res.render('reg');
 
 });
 
