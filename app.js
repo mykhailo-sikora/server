@@ -40,6 +40,9 @@ app.get("/allUsers", (req, res) => {
     res.render('allUsers', {allUsers})
 });
 
+app.post("/allUsers", (req, res) => {
+    res.render('allUsers', {allUsers})
+});
 // login
 
 app.get("/login", (req, res) => {
@@ -48,6 +51,10 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
     const {name, password} = req.body;
+    let findUser = allUsers.find((user) => user.name === name);
+    console.log(findUser.name);
+    findUser.password === password ? res.render('allUsers') : res.render('reg');
+
 });
 
 //registration
@@ -59,10 +66,13 @@ app.get("/reg", (req, res) => {
 app.post('/reg', (req, res) => {
 
     let {name, email} = req.body;
-
-    allUsers.push(req.body);
-    console.log(allUsers);
-    res.end(`Welcome ${name} u a registered! Your email: ${email}`)
+    let isUserRegistered = allUsers.find((user) => user.name === name || user.email === email);
+    if (!isUserRegistered) {
+        allUsers.push(req.body);
+        res.end(`Welcome ${name} u a registered! Your email: ${email}`)
+        return 0;
+    }
+    res.end('user is already registered')
 
 });
 
