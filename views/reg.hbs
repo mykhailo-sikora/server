@@ -12,11 +12,13 @@
 <div class="main-menu">
     <a href="login">login</a>
     <a href="main">Main page</a>
-    <a href="allUsers">Show all users</a>
+    <a href="allusers">Show all users</a>
 </div>
 
 <h2>Реєстрація</h2>
 <form action="/reg" method="post">
+    <h1 style="color: darkred">{{message}} </h1>
+    <br>
     <label>
         <input type="text" name="name" placeholder="Login" value="">
     </label>
