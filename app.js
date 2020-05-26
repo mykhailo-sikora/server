@@ -11,13 +11,6 @@ app.use(express.static(path.join(__dirname, 'views'))); // папка у від�
 app.use(express.json()); // вчимо ноду читати, обробляти json
 app.use(express.urlencoded()); // вчимо читати url
 
-// routers
-
-app.use('/login', loginRoutes); // все, що буде починатись із /login попадатиме на цю урлу
-app.use('/products', productRouter); // все, що буде починатись із /products попадатиме на цю урлу
-app.use('/users', useRouter); // все, що буде починатись із /user попадатиме на цю урлу
-
-
 // встановлюємо темплейт двіжок, .hbs - назва мого двіжка, вказуємо конфігурації.
 // це пишеться якщо немає взагалі фронта. Це можна юзати, ящщо необхідні шаблони для відправки листів
 app.engine('.hbs', exprsBars({
@@ -33,6 +26,13 @@ app.set('views', path.join(__dirname, 'views')); // встанов. шлях д�
 //res - те, що ми віддаємо назад
 
 
+// routers
+
+app.use('/login', loginRoutes); // все, що буде починатись із /login попадатиме на цю урлу
+app.use('/products', productRouter); // все, що буде починатись із /products попадатиме на цю урлу
+app.use('/users', useRouter); // все, що буде починатись із /user попадатиме на цю урлу
+
+
 // app.get("/", (req, res) => {
 //     res.render('main')
 // });
@@ -41,11 +41,11 @@ app.set('views', path.join(__dirname, 'views')); // встанов. шлях д�
 // });
 
 // app.get("/allusers", (req, res) => {
-//     res.render('allusers', {allUsers})
+//     res.render('allusers')
 // });
 //
 // app.post("/allusers", (req, res) => {
-//     res.render('allusers', {allUsers})
+//     res.render('allusers')
 // });
 
 
@@ -68,6 +68,4 @@ app.set('views', path.join(__dirname, 'views')); // встанов. шлях д�
 // });
 
 
-app.listen(5555, (err) =>
-    err ? console.log(err) : console.log("server working and listen: 5555")
-);
+app.listen(5555, err => err ? console.log(err) : console.log("server working and listen: 5555"));

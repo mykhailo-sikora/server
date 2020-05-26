@@ -1,19 +1,18 @@
-const path = require('path');
 let allUsers = [];
 
-class User {
+module.exports = class User {
     constructor(name, email, password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    getOneUser(name, password) {
+    static getOneUser(name, password) {
         return allUsers.find((user) => user.name === name && user.password === password);
     }
 
-    getAllUsers() {
-
+    static getAllUsers() {
+        return allUsers;
     }
 
     deleteUserById() {
@@ -21,8 +20,9 @@ class User {
     }
 
     createUser() {
-        User.
-    allUsers.push(this);
+        console.log(this);
+        allUsers.push(this);
+        console.log(allUsers);
     }
 
 

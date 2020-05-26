@@ -5,7 +5,7 @@ const loginRouter = Router();
 let allUsers = [];
 
 loginRouter.post('/', (req, res) => {
-
+// реєстрація юзера і перевірка юзера у масиві
     const {name, email} = req.body;
     const isUserRegistered = allUsers.find((user) => user.name === name || user.email === email);
     if (!isUserRegistered) {
@@ -16,6 +16,7 @@ loginRouter.post('/', (req, res) => {
     res.end('login is already registered')
 
 });
+// логінація і перевірка юзера на коректність внесених даних.
 
 loginRouter.post("/login", (req, res) => {
     const {name, password} = req.body;

@@ -2,7 +2,8 @@ const {userService} = require('../../service');
 
 module.exports = {
     getAllUsers: async (req, res) => {
-        await userService.
+        const users = await userService.getAllUsers();
+        console.log(users);
         res.end('get users')
     },
 
@@ -12,8 +13,10 @@ module.exports = {
     deleteUser: (req, res) => {
         res.end('delete user')
     },
-    createUser: async (req, res) => {
-       await userService.createUsers(req.body);
-
+    createUser: (req, res) => {
+        const {name, email, password} = req.body;
+        const User = new userService(name, email, password);
+        User.createUser();
+        res.end('user crefted')
     }
 };
